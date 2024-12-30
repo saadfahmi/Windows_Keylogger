@@ -7,18 +7,18 @@ LRESULT CALLBACK hook_proc(int code, WPARAM wParam, LPARAM lParam)
         KBDLLHOOKSTRUCT *pkey = (KBDLLHOOKSTRUCT *)lParam;
         switch (pkey->vkCode) 
         {
-            case VK_BACK:
-                    printf("(BACKSPACE)");
-                    break;
-            case VK_RETURN:
-                    printf("(ENTER)");
-                    break;
-            case VK_SPACE:
-                    printf(" ");
-                    break;
-            case VK_SHIFT:
-                    printf("(Shift)");
-                    break;
+                    case VK_BACK:
+                        printf("(BACKSPACE)");
+                        break;
+                    case VK_RETURN:
+                        printf("(ENTER)");
+                        break;
+                    case VK_SPACE:
+                            printf(" ");
+                            break;
+                    case VK_SHIFT:
+                            printf("(Shift)");
+                            break;
             default: 
             {
                             char key = MapVirtualKey(pkey->vkCode, MAPVK_VK_TO_CHAR);
@@ -27,6 +27,7 @@ LRESULT CALLBACK hook_proc(int code, WPARAM wParam, LPARAM lParam)
                             else
                                 printf("[0x%x]", pkey->vkCode); 
                                 break;
+        
             }
         }
     }
@@ -39,7 +40,8 @@ int main() {
             if (hhook == NULL) {
              printf("Hook wasn't installed\n");
 
-            return 1;
+            return (1);
+            
     }
             printf("Hook was installed\n");
     MSG msg;
